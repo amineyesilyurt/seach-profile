@@ -1,0 +1,25 @@
+version: "3"
+services:
+  springboot-app:
+    image: springboot-app
+    #container_name: spring app
+    #restart: always
+    build: .
+    ports:
+      - 8083:8083
+    environment:
+      POSTGRES_HOST: postgresqldb #container_name
+      POSTGRES_USER: myusername
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_PORT: 5432
+  
+  postgresqldb:
+    image: postgres
+    container_name: postgresqldb
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_USER: myusername
+      POSTGRES_PASSWORD: mypassword
+      
